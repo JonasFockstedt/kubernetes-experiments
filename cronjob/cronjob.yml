@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: leeroy
+  namespace: cronjob
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: leeroy
+            image: josafz/leeroy
+            imagePullPolicy: IfNotPresent
+          restartPolicy: OnFailure
